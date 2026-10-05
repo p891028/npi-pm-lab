@@ -7,9 +7,7 @@
 <title>NPI PM Lab</title>
 
 <style>
-* {
-  box-sizing: border-box;
-}
+* { box-sizing: border-box; }
 
 body {
   margin: 0;
@@ -36,52 +34,61 @@ header p {
 
 .container {
   max-width: 920px;
-  margin: 0 auto;
+  margin: auto;
   padding: 28px 20px 60px;
 }
 
-.project-card {
+.card {
   background: #161b22;
   border: 1px solid #30363d;
   border-radius: 10px;
   padding: 22px;
-  margin-bottom: 22px;
+  margin-bottom: 20px;
 }
 
-.project-card h2 {
-  margin: 0 0 12px;
-  font-size: 17px;
-}
-
-.project-card p {
-  margin: 7px 0;
-  color: #c9d1d9;
-  line-height: 1.6;
-}
-
-.progress {
-  display: flex;
-  gap: 6px;
-  margin-bottom: 25px;
-}
-
-.progress div {
-  height: 5px;
-  flex: 1;
-  background: #30363d;
-  border-radius: 10px;
-}
-
-.progress div.active {
-  background: #2f81f7;
-}
-
-.stage {
+.case-tag {
   color: #58a6ff;
-  font-size: 13px;
+  font-size: 12px;
   font-weight: bold;
-  letter-spacing: .5px;
+  letter-spacing: .6px;
   margin-bottom: 8px;
+}
+
+h2 {
+  margin-top: 0;
+}
+
+p {
+  line-height: 1.65;
+}
+
+.muted {
+  color: #8b949e;
+}
+
+.dashboard {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.metric {
+  background: #161b22;
+  border: 1px solid #30363d;
+  border-radius: 8px;
+  padding: 14px;
+}
+
+.metric-label {
+  color: #8b949e;
+  font-size: 12px;
+}
+
+.metric-value {
+  margin-top: 6px;
+  font-size: 18px;
+  font-weight: bold;
 }
 
 .question {
@@ -91,20 +98,22 @@ header p {
   overflow: hidden;
 }
 
-.question-header {
-  padding: 22px 24px 18px;
+.question-head {
+  padding: 22px 24px;
   border-bottom: 1px solid #30363d;
 }
 
-.question-header h2 {
-  margin: 0 0 12px;
-  font-size: 21px;
+.stage {
+  color: #58a6ff;
+  font-size: 13px;
+  font-weight: bold;
+  margin-bottom: 8px;
 }
 
 .situation {
   color: #c9d1d9;
   line-height: 1.65;
-  margin-bottom: 18px;
+  margin: 15px 0;
 }
 
 .prompt {
@@ -113,21 +122,15 @@ header p {
 }
 
 .options {
-  padding: 8px 0;
+  padding: 7px 0;
 }
 
 .option {
   display: flex;
-  align-items: flex-start;
   gap: 13px;
   padding: 14px 24px;
   cursor: pointer;
   border-bottom: 1px solid #21262d;
-  line-height: 1.45;
-}
-
-.option:last-child {
-  border-bottom: none;
 }
 
 .option:hover {
@@ -141,14 +144,10 @@ header p {
   accent-color: #2f81f7;
 }
 
-.option-en {
-  color: #e6edf3;
-}
-
-.option-zh {
+.zh {
   color: #8b949e;
-  margin-top: 3px;
   font-size: 14px;
+  margin-top: 3px;
 }
 
 .actions {
@@ -161,62 +160,67 @@ header p {
 button {
   border: 0;
   border-radius: 6px;
-  padding: 11px 24px;
-  font-size: 14px;
+  padding: 11px 23px;
   font-weight: bold;
   cursor: pointer;
 }
 
-.confirm-btn {
+.confirm {
   background: #238636;
   color: white;
 }
 
-.confirm-btn:hover {
-  background: #2ea043;
-}
-
-.next-btn {
+.next {
   background: #1f6feb;
   color: white;
 }
 
-.next-btn:hover {
-  background: #388bfd;
+.event {
+  border-left: 3px solid #58a6ff;
+  padding-left: 16px;
+  margin: 15px 0;
 }
 
-.message {
-  background: #161b22;
-  border: 1px solid #30363d;
-  border-radius: 10px;
-  padding: 28px;
-  text-align: center;
+.event-title {
+  font-weight: bold;
+  margin-bottom: 5px;
 }
 
-.message h2 {
-  margin-top: 0;
+.log {
+  margin-top: 20px;
 }
 
-.message p {
-  color: #8b949e;
-  line-height: 1.6;
+.log-entry {
+  padding: 10px 0;
+  border-bottom: 1px solid #21262d;
+  color: #c9d1d9;
+  line-height: 1.5;
 }
 
-.hidden {
-  display: none;
+.impact {
+  font-weight: bold;
 }
 
-.decision-note {
-  color: #8b949e;
-  font-size: 13px;
-  margin-top: 14px;
+.review-row {
+  padding: 14px 0;
+  border-bottom: 1px solid #30363d;
+}
+
+.review-row:last-child {
+  border-bottom: none;
 }
 
 .footer {
-  color: #484f58;
   text-align: center;
-  margin-top: 30px;
+  color: #484f58;
   font-size: 12px;
+  margin-top: 30px;
+}
+
+@media (max-width: 650px) {
+  .dashboard {
+    grid-template-columns: 1fr;
+  }
 }
 </style>
 </head>
@@ -230,8 +234,10 @@ button {
 
 <div class="container">
 
-  <div class="project-card" id="intro">
-    <h2>Project Background / 專案背景</h2>
+  <div class="card" id="background">
+    <div class="case-tag">PROJECT BACKGROUND / 專案背景</div>
+
+    <h2>Medical Device Host Customization</h2>
 
     <p>
       Medical device project based on an existing standard motherboard
@@ -248,299 +254,610 @@ button {
     </p>
   </div>
 
-  <div class="progress" id="progress"></div>
+  <div class="dashboard">
+    <div class="metric">
+      <div class="metric-label">PROJECT TIME</div>
+      <div class="metric-value" id="timeDisplay">Week 0</div>
+    </div>
+
+    <div class="metric">
+      <div class="metric-label">CURRENT PHASE</div>
+      <div class="metric-value" id="phaseDisplay">Kickoff</div>
+    </div>
+
+    <div class="metric">
+      <div class="metric-label">SCHEDULE IMPACT</div>
+      <div class="metric-value" id="impactDisplay">—</div>
+    </div>
+  </div>
 
   <div id="game"></div>
 
   <div class="footer">
-    NPI PM Lab — Decision Simulation
+    NPI PM Lab — DVT Decision Simulation
   </div>
 
 </div>
 
 <script>
 
-const stages = [
+const state = {
+  week: 0,
+  delay: 0,
+
+  decisions: {},
+
+  stackup: false,
+  materialChecked: false,
+  layoutReserved: false,
+  fanStarted: false,
+  vrttOrdered: false,
+  validationReserved: false,
+
+  cableStartedEarly: false,
+  packagingStartedEarly: false,
+  customsStartedEarly: false,
+
+  cableReady: false,
+  packagingReady: false,
+  physicalPhoto: false,
+
+  layoutDelay: 0,
+  pcbDelay: 0,
+  cableRework: false,
+  packagingRework: false,
+
+  fanReady: false,
+  vrttReady: false,
+  validationSlot: false,
+
+  log: []
+};
+
+let scene = 0;
+
+
+/* -------------------------------------------------
+   SCENES
+------------------------------------------------- */
+
+const scenes = [
 
 {
-  stage: "WEEK 0 — PROJECT KICKOFF",
-  title: "HW Schematic Started / HW 線路設計開始",
-  situation: `
-    HW schematic design has started.<br>
-    HW 線路設計已開始。
-  `,
-  prompt: `
-    Which actions would you take?<br>
-    你會採取哪些行動？
-  `,
+  id: "kickoff",
+  week: 0,
+  phase: "Kickoff",
+
+  title: "WEEK 0 — Project Kickoff",
+
+  situation:
+    `HW schematic design has started.<br>
+     HW 線路設計已開始。`,
+
   options: [
-    ["Request PCB Stack-up", "請 PCB 廠準備 Stack-up"],
-    ["Check PCB Material Availability", "確認 PCB 板材供應狀況"],
-    ["Reserve Layout Resource", "預約 Layout 資源"],
-    ["Start Special Fan Development", "啟動特殊風扇開發"],
-    ["Order PV VRTT Fixture", "採購 PV VRTT 治具"],
-    ["Reserve Validation Resources", "預排驗證資源"],
-    ["Request Test Cable Samples", "申請測試線材樣品"],
-    ["Start Packaging Design", "啟動包材設計"],
-    ["Prepare Customs Documentation", "準備報關文件"]
+    ["stackup",
+     "Request PCB Stack-up",
+     "請 PCB 廠準備 Stack-up"],
+
+    ["material",
+     "Check PCB Material Availability",
+     "確認 PCB 板材供應狀況"],
+
+    ["layout",
+     "Reserve Layout Resource",
+     "預約 Layout 資源"],
+
+    ["fan",
+     "Start Special Fan Development",
+     "啟動特殊風扇開發"],
+
+    ["vrtt",
+     "Order PV VRTT Fixture",
+     "採購 PV VRTT 治具"],
+
+    ["validation",
+     "Reserve Validation Resources",
+     "預排驗證資源"],
+
+    ["cable",
+     "Request Test Cable Samples",
+     "申請測試線材樣品"],
+
+    ["packaging",
+     "Start Packaging Design",
+     "啟動包材設計"],
+
+    ["customs",
+     "Prepare Customs Documentation",
+     "準備報關文件"]
   ]
 },
 
 {
-  stage: "HW DESIGN UPDATE",
-  title: "Schematic Complete / 線路設計完成",
-  situation: `
-    HW schematic is complete. Layout can start.<br>
-    HW 線路設計完成，可以開始 Layout。<br><br>
+  id: "hwComplete",
+  week: 4,
+  phase: "HW / Layout",
 
-    PCB vendor reports that the specified PCB material
-    is currently not in stock.<br>
-    PCB 廠回覆指定板材目前沒有現料。
-  `,
-  prompt: `
-    Which actions would you take?<br>
-    你會採取哪些行動？
-  `,
+  title: "HW Design Update",
+
+  situation: () => {
+
+    let text =
+      `HW schematic design is complete.<br>
+       HW 線路設計完成。`;
+
+    if (!state.materialChecked) {
+      text +=
+        `<div class="event">
+          <div class="event-title">PCB Vendor</div>
+          The specified PCB material is currently not in stock.<br>
+          指定 PCB 板材目前沒有現料。
+        </div>`;
+    }
+
+    if (!state.layoutReserved) {
+      text +=
+        `<div class="event">
+          <div class="event-title">Layout</div>
+          No Layout resource is available for the originally planned period.<br>
+          原規劃時段目前沒有可用的 Layout 資源。
+        </div>`;
+    }
+
+    return text;
+  },
+
   options: [
-    ["Release Layout", "啟動 Layout"],
-    ["Ask PCB vendor to prepare the specified material", "請 PCB 廠準備指定板材"],
-    ["Ask EE to evaluate available alternative material", "請 EE 評估可取得的替代板材"],
-    ["Wait until Layout is completed before confirming PCB material", "等 Layout 完成後再確認板材"],
-    ["Update the DVT schedule", "更新 DVT 時程"],
-    ["Reconfirm validation resource timing", "重新確認驗證資源時程"]
+    ["releaseLayout",
+     "Release Layout",
+     "啟動 Layout"],
+
+    ["prepareMaterial",
+     "Ask PCB vendor to prepare the specified material",
+     "請 PCB 廠準備指定板材"],
+
+    ["altMaterial",
+     "Ask EE to evaluate available alternative material",
+     "請 EE 評估可取得的替代板材"],
+
+    ["layoutPriority",
+     "Request Layout resource coordination",
+     "協調 Layout 資源"],
+
+    ["updateSchedule",
+     "Update the DVT schedule",
+     "更新 DVT 時程"],
+
+    ["reconfirmValidation",
+     "Reconfirm validation resource timing",
+     "重新確認驗證資源時程"]
   ]
 },
 
 {
-  stage: "LAYOUT UPDATE",
-  title: "Major Component Placement Ready / 大型元件定位完成",
-  situation: `
-    Major component placement is complete.
-    Routing is about to start.<br>
-    大型元件 Placement 已完成，即將開始 Routing。
-  `,
-  prompt: `
-    Which actions would you take?<br>
-    你會採取哪些行動？
-  `,
+  id: "placement",
+  week: 5,
+  phase: "Layout",
+
+  title: "Major Component Placement Ready",
+
+  situation:
+    `Major component placement is complete.
+     Routing can begin.<br>
+     大型元件 Placement 已完成，可以開始 Routing。`,
+
   options: [
-    ["Continue Routing", "繼續 Routing"],
-    ["Send Placement and schematic to customer", "將 Placement 與線路提供客戶確認"],
-    ["Ask ME to review the current placement", "請 ME 確認目前 Placement"],
-    ["Request test cable samples", "申請測試線材樣品"],
-    ["Start packaging design", "啟動包材設計"],
-    ["Update the DVT schedule", "更新 DVT 時程"]
+    ["routing",
+     "Continue Routing",
+     "繼續 Routing"],
+
+    ["customerPlacement",
+     "Send Placement and schematic to customer",
+     "將 Placement 與線路提供客戶確認"],
+
+    ["meReview",
+     "Ask ME to review the current placement",
+     "請 ME 確認目前 Placement"],
+
+    ["cableNow",
+     "Request test cable samples",
+     "申請測試線材樣品"],
+
+    ["packagingNow",
+     "Start packaging design",
+     "啟動包材設計"],
+
+    ["schedule",
+     "Update the DVT schedule",
+     "更新 DVT 時程"]
   ]
 },
 
 {
-  stage: "CUSTOMER REVIEW",
-  title: "Customer Review Pending / 客戶確認中",
-  situation: `
-    Customer review is still pending.
-    Layout resource is available.<br>
-    客戶仍在確認中，目前 Layout 資源可使用。
-  `,
-  prompt: `
-    Which actions would you take?<br>
-    你會採取哪些行動？
-  `,
+  id: "customerPending",
+  week: 6,
+  phase: "Layout",
+
+  title: "Customer Review",
+
+  situation:
+    `Customer review is still pending.
+     Layout resource is currently available.<br>
+     客戶仍在確認中，目前 Layout 資源可使用。`,
+
   options: [
-    ["Continue Routing", "繼續 Routing"],
-    ["Continue only the unaffected areas", "僅繼續不受影響的區域"],
-    ["Hold Routing", "暫停 Routing"],
-    ["Follow up with the customer", "向客戶追蹤確認"],
-    ["Delay the Layout schedule by one week", "Layout 時程延後一週"],
-    ["Update downstream schedules", "更新後續時程"]
+    ["continueAll",
+     "Continue Routing",
+     "繼續 Routing"],
+
+    ["continueUnaffected",
+     "Continue only the unaffected areas",
+     "僅繼續不受影響的區域"],
+
+    ["hold",
+     "Hold Routing",
+     "暫停 Routing"],
+
+    ["followCustomer",
+     "Follow up with the customer",
+     "向客戶追蹤確認"],
+
+    ["delayWeek",
+     "Delay the Layout schedule by one week",
+     "Layout 時程延後一週"],
+
+    ["updateDownstream",
+     "Update downstream schedules",
+     "更新後續時程"]
   ]
 },
 
 {
-  stage: "CUSTOMER FEEDBACK",
-  title: "Design Change / 設計變更",
-  situation: `
-    Customer requests a change to the LAN connector position
-    and the adjacent I/O connector.<br>
-    客戶要求變更 LAN Connector 及相鄰 I/O Connector 位置。
-  `,
-  prompt: `
-    Which actions would you take?<br>
-    你會採取哪些行動？
-  `,
+  id: "customerChange",
+  week: 7,
+  phase: "Layout",
+
+  title: "Customer Feedback",
+
+  situation:
+    `Customer requests a change to the LAN connector position
+     and the adjacent I/O connector.<br>
+     客戶要求變更 LAN Connector 及相鄰 I/O Connector 位置。`,
+
   options: [
-    ["Update the affected Layout", "修改受影響的 Layout"],
-    ["Review the impact on completed Routing", "確認已完成 Routing 的影響"],
-    ["Review the mechanical impact", "確認機構影響"],
-    ["Review SI-related impact", "確認 SI 相關影響"],
-    ["Reconfirm test cable requirements", "重新確認測試線材需求"],
-    ["Reconfirm packaging requirements", "重新確認包材需求"],
-    ["Keep the original DVT schedule", "維持原 DVT 時程"],
-    ["Update the DVT schedule", "更新 DVT 時程"]
+    ["updateLayout",
+     "Update the affected Layout",
+     "修改受影響的 Layout"],
+
+    ["routingImpact",
+     "Review the impact on completed Routing",
+     "確認已完成 Routing 的影響"],
+
+    ["mechanical",
+     "Review the mechanical impact",
+     "確認機構影響"],
+
+    ["siImpact",
+     "Review SI-related impact",
+     "確認 SI 相關影響"],
+
+    ["cableReview",
+     "Reconfirm test cable requirements",
+     "重新確認測試線材需求"],
+
+    ["packageReview",
+     "Reconfirm packaging requirements",
+     "重新確認包材需求"],
+
+    ["keepSchedule",
+     "Keep the current DVT schedule",
+     "維持目前 DVT 時程"],
+
+    ["changeSchedule",
+     "Update the DVT schedule",
+     "更新 DVT 時程"]
   ]
 },
 
 {
-  stage: "LAYOUT NEAR COMPLETION",
-  title: "Layout Release Approaching / Layout 即將 Release",
-  situation: `
-    Layout is expected to be released shortly.<br>
-    Layout 即將 Release。
-  `,
-  prompt: `
-    Which actions would you take?<br>
-    你會採取哪些行動？
-  `,
+  id: "routingNearComplete",
+  week: 8,
+  phase: "Layout Release",
+
+  title: "Layout Near Completion",
+
+  situation:
+    `Layout is expected to be released shortly.<br>
+     Layout 即將 Release。`,
+
   options: [
-    ["Request test cable samples", "申請測試線材樣品"],
-    ["Start packaging design", "啟動包材設計"],
-    ["Confirm accessory requirements", "確認附件需求"],
-    ["Reconfirm PCB production schedule", "重新確認 PCB 生產時程"],
-    ["Reconfirm DVT build schedule", "重新確認 DVT 生產時程"],
-    ["Reconfirm validation resource timing", "重新確認驗證資源時程"],
-    ["Prepare customs documentation", "準備報關文件"],
-    ["Start EMC", "啟動 EMC"]
+    ["cableCorrect",
+     "Request test cable samples",
+     "申請測試線材樣品"],
+
+    ["packagingCorrect",
+     "Start packaging design",
+     "啟動包材設計"],
+
+    ["accessory",
+     "Confirm accessory requirements",
+     "確認附件需求"],
+
+    ["pcbSchedule",
+     "Reconfirm PCB production schedule",
+     "重新確認 PCB 生產時程"],
+
+    ["dvtSchedule",
+     "Reconfirm DVT build schedule",
+     "重新確認 DVT 生產時程"],
+
+    ["validationTiming",
+     "Reconfirm validation resource timing",
+     "重新確認驗證資源時程"],
+
+    ["customsNow",
+     "Prepare customs documentation",
+     "準備報關文件"],
+
+    ["emcNow",
+     "Start EMC",
+     "啟動 EMC"]
   ]
 },
 
 {
-  stage: "DVT PRODUCTION",
-  title: "First DVT Board Available / DVT 首板產出",
-  situation: `
-    The first DVT board is available.
-    The remaining units are still in production.<br>
-    DVT 首板已產出，其餘數量仍在生產中。
-  `,
-  prompt: `
-    Which actions would you take?<br>
-    你會採取哪些行動？
-  `,
+  id: "firstBoard",
+  week: 12,
+  phase: "DVT Production",
+
+  title: "First DVT Board Available",
+
+  situation:
+    `The first DVT board is available.
+     The remaining units are still in production.<br>
+     DVT 首板已產出，其餘數量仍在生產中。`,
+
   options: [
-    ["Check the first board status", "確認首板狀態"],
-    ["Request physical product photos", "取得實體產品照片"],
-    ["Confirm remaining production schedule", "確認剩餘生產時程"],
-    ["Prepare shipment documents", "準備出貨文件"],
-    ["Confirm logistics arrangement", "確認物流安排"],
-    ["Wait for the complete DVT lot", "等待整批 DVT 完成"],
-    ["Reconfirm validation schedule", "重新確認驗證時程"]
+    ["checkBoard",
+     "Check the first board status",
+     "確認首板狀態"],
+
+    ["photo",
+     "Request physical product photos",
+     "取得實體產品照片"],
+
+    ["production",
+     "Confirm remaining production schedule",
+     "確認剩餘生產時程"],
+
+    ["shippingDocs",
+     "Prepare shipment documents",
+     "準備出貨文件"],
+
+    ["logistics",
+     "Confirm logistics arrangement",
+     "確認物流安排"],
+
+    ["waitLot",
+     "Wait for the complete DVT lot",
+     "等待整批 DVT 完成"],
+
+    ["validationAgain",
+     "Reconfirm validation schedule",
+     "重新確認驗證時程"]
   ]
 },
 
 {
-  stage: "DVT READY",
-  title: "DVT Units Ready / DVT 樣機完成",
-  situation: `
-    DVT units are ready.<br>
-    DVT 樣機已完成。
-  `,
-  prompt: `
-    Which actions would you take?<br>
-    你會採取哪些行動？
-  `,
+  id: "shipment",
+  week: 13,
+  phase: "Shipment Preparation",
+
+  title: "Shipment Preparation",
+
+  situation: () => {
+
+    let text =
+      `Production is approaching the planned shipment window.<br>
+       生產即將進入預定出貨時程。`;
+
+    if (!state.physicalPhoto) {
+      text +=
+        `<div class="event">
+          <div class="event-title">Logistics</div>
+          Physical product photos are still required for the shipment documentation.<br>
+          出貨文件仍缺少實體產品照片。
+        </div>`;
+    }
+
+    return text;
+  },
+
   options: [
-    ["Start PV", "啟動 PV"],
-    ["Start SI", "啟動 SI"],
-    ["Start THERMAL", "啟動 THERMAL"],
-    ["Start EMC I/O Pre-scan", "啟動 EMC I/O Pre-scan"],
-    ["Start DQA", "啟動 DQA"],
-    ["Start QA Lab", "啟動 QA Lab"],
-    ["Reconfirm validation resources", "重新確認驗證資源"],
-    ["Arrange customer samples", "安排客戶樣品"]
+    ["prepareCustoms",
+     "Prepare customs documentation",
+     "準備報關文件"],
+
+    ["getPhoto",
+     "Request physical product photos",
+     "取得實體產品照片"],
+
+    ["express",
+     "Confirm express shipment",
+     "確認快遞出貨安排"],
+
+    ["productionStatus",
+     "Confirm production completion date",
+     "確認生產完成日期"],
+
+    ["validationSchedule",
+     "Reconfirm validation schedule",
+     "重新確認驗證時程"]
+  ]
+},
+
+{
+  id: "dvtReady",
+  week: 14,
+  phase: "DVT Ready",
+
+  title: "DVT Units Ready",
+
+  situation: () => {
+
+    let text =
+      `DVT units are ready.<br>
+       DVT 樣機已完成。`;
+
+    if (!state.fanStarted) {
+      text +=
+        `<div class="event">
+          <div class="event-title">Thermal</div>
+          The required special fan is not ready.<br>
+          專案所需的特殊風扇尚未 Ready。
+        </div>`;
+    }
+
+    if (!state.vrttOrdered) {
+      text +=
+        `<div class="event">
+          <div class="event-title">Validation</div>
+          The required VRTT fixture is not ready.<br>
+          本案需要的 VRTT Fixture 尚未 Ready。
+        </div>`;
+    }
+
+    if (!state.validationReserved) {
+      text +=
+        `<div class="event">
+          <div class="event-title">Validation Resource</div>
+          The originally expected validation period has no confirmed resource slot.<br>
+          原預估驗證時段目前沒有已確認的資源。
+        </div>`;
+    }
+
+    return text;
+  },
+
+  options: [
+    ["pv",
+     "Start PV",
+     "啟動 PV"],
+
+    ["si",
+     "Start SI",
+     "啟動 SI"],
+
+    ["thermal",
+     "Start THERMAL",
+     "啟動 THERMAL"],
+
+    ["emc",
+     "Start EMC I/O Pre-scan",
+     "啟動 EMC I/O Pre-scan"],
+
+    ["dqa",
+     "Start DQA",
+     "啟動 DQA"],
+
+    ["qa",
+     "Start QA Lab",
+     "啟動 QA Lab"],
+
+    ["resource",
+     "Reconfirm validation resources",
+     "重新確認驗證資源"],
+
+    ["customerSample",
+     "Arrange customer samples",
+     "安排客戶樣品"]
   ]
 }
 
 ];
 
-let currentStage = 0;
-let decisions = [];
 
-function createProgress() {
+/* -------------------------------------------------
+   UI
+------------------------------------------------- */
 
-  const progress = document.getElementById("progress");
-  progress.innerHTML = "";
+function renderScene() {
 
-  stages.forEach((_, index) => {
+  const data = scenes[scene];
 
-    const bar = document.createElement("div");
+  state.week = data.week + state.delay;
 
-    if (index <= currentStage) {
-      bar.classList.add("active");
-    }
+  document.getElementById("timeDisplay").textContent =
+    "Week " + state.week;
 
-    progress.appendChild(bar);
+  document.getElementById("phaseDisplay").textContent =
+    data.phase;
 
-  });
+  document.getElementById("impactDisplay").textContent =
+    state.delay === 0 ? "—" : "+" + state.delay + " wk";
 
-}
+  let situation =
+    typeof data.situation === "function"
+      ? data.situation()
+      : data.situation;
 
-function renderStage() {
+  let options = "";
 
-  createProgress();
+  data.options.forEach(option => {
 
-  const game = document.getElementById("game");
-  const data = stages[currentStage];
-
-  let optionsHTML = "";
-
-  data.options.forEach((option, index) => {
-
-    optionsHTML += `
+    options += `
       <label class="option">
+
         <input
           type="checkbox"
-          name="decision"
-          value="${index}"
+          value="${option[0]}"
         >
 
         <div>
-          <div class="option-en">
-            ${option[0]}
-          </div>
-
-          <div class="option-zh">
-            ${option[1]}
-          </div>
+          <div>${option[1]}</div>
+          <div class="zh">${option[2]}</div>
         </div>
+
       </label>
     `;
 
   });
 
-  game.innerHTML = `
+  document.getElementById("game").innerHTML = `
+
     <div class="question">
 
-      <div class="question-header">
+      <div class="question-head">
 
         <div class="stage">
-          ${data.stage}
+          ${data.stage || data.phase.toUpperCase()}
         </div>
 
-        <h2>
-          ${data.title}
-        </h2>
+        <h2>${data.title}</h2>
 
         <div class="situation">
-          ${data.situation}
+          ${situation}
         </div>
 
         <div class="prompt">
-          ${data.prompt}
+          Which actions would you take?<br>
+          你會採取哪些行動？
         </div>
 
-        <div class="decision-note">
+        <div class="muted" style="margin-top:8px;">
           Select all that apply / 可複選
         </div>
 
       </div>
 
       <div class="options">
-        ${optionsHTML}
+        ${options}
       </div>
 
       <div class="actions">
         <button
-          class="confirm-btn"
-          onclick="confirmDecision()"
-        >
+          class="confirm"
+          onclick="confirmDecision()">
           CONFIRM / 確認
         </button>
       </div>
@@ -555,104 +872,425 @@ function renderStage() {
 
 }
 
+
+/* -------------------------------------------------
+   DECISION ENGINE
+------------------------------------------------- */
+
 function confirmDecision() {
 
-  const checked =
-    [...document.querySelectorAll(
-      'input[name="decision"]:checked'
-    )];
+  const current = scenes[scene];
 
   const selected =
-    checked.map(input =>
-      stages[currentStage].options[
-        Number(input.value)
-      ]
-    );
+    [...document.querySelectorAll(
+      '#game input[type="checkbox"]:checked'
+    )].map(x => x.value);
 
-  decisions.push({
-    stage: stages[currentStage].stage,
-    selected: selected
-  });
+  state.decisions[current.id] = selected;
 
-  showTransition();
+  processDecision(current.id, selected);
 
+  if (scene === scenes.length - 1) {
+    showReview();
+    return;
+  }
+
+  scene++;
+  renderScene();
 }
 
-function showTransition() {
 
-  const game = document.getElementById("game");
+function has(list, key) {
+  return list.includes(key);
+}
 
-  if (currentStage >= stages.length - 1) {
 
-    game.innerHTML = `
-      <div class="message">
+function processDecision(id, selected) {
 
-        <h2>
-          DVT Decision Round Complete
-        </h2>
+  /* WEEK 0 */
 
-        <p>
-          DVT 階段決策已完成。
-        </p>
+  if (id === "kickoff") {
 
-        <p>
-          Your decisions have been recorded.<br>
-          系統已記錄本輪所有決策。
-        </p>
+    state.stackup =
+      has(selected, "stackup");
+
+    state.materialChecked =
+      has(selected, "material");
+
+    state.layoutReserved =
+      has(selected, "layout");
+
+    state.fanStarted =
+      has(selected, "fan");
+
+    state.vrttOrdered =
+      has(selected, "vrtt");
+
+    state.validationReserved =
+      has(selected, "validation");
+
+    if (has(selected, "cable")) {
+      state.cableStartedEarly = true;
+    }
+
+    if (has(selected, "packaging")) {
+      state.packagingStartedEarly = true;
+    }
+
+    if (has(selected, "customs")) {
+      state.customsStartedEarly = true;
+
+      state.log.push(
+        "Customs documentation was initiated before physical product information was available."
+      );
+    }
+
+    if (!state.stackup) {
+      state.delay += 1;
+
+      state.log.push(
+        "PCB Stack-up preparation was not initiated at project kickoff."
+      );
+    }
+
+    if (!state.materialChecked) {
+      state.pcbDelay += 2;
+      state.delay += 2;
+
+      state.log.push(
+        "PCB material availability was not checked during early design."
+      );
+    }
+
+    if (!state.layoutReserved) {
+      state.layoutDelay += 2;
+      state.delay += 2;
+
+      state.log.push(
+        "Layout resource was not reserved during early design."
+      );
+    }
+  }
+
+
+  /* HW COMPLETE */
+
+  if (id === "hwComplete") {
+
+    if (!state.materialChecked) {
+
+      if (
+        has(selected, "prepareMaterial") ||
+        has(selected, "altMaterial")
+      ) {
+        state.materialChecked = true;
+      }
+      else {
+        state.delay += 1;
+
+        state.log.push(
+          "PCB material decision remained unresolved after schematic completion."
+        );
+      }
+    }
+
+    if (!state.layoutReserved) {
+
+      if (has(selected, "layoutPriority")) {
+        state.layoutReserved = true;
+      }
+      else {
+        state.delay += 1;
+
+        state.log.push(
+          "Layout resource remained unresolved after schematic completion."
+        );
+      }
+    }
+  }
+
+
+  /* PLACEMENT */
+
+  if (id === "placement") {
+
+    if (has(selected, "cableNow")) {
+      state.cableStartedEarly = true;
+    }
+
+    if (has(selected, "packagingNow")) {
+      state.packagingStartedEarly = true;
+    }
+
+    state.decisions.customerPlacement =
+      has(selected, "customerPlacement");
+  }
+
+
+  /* CUSTOMER PENDING */
+
+  if (id === "customerPending") {
+
+    if (has(selected, "delayWeek")) {
+      state.delay += 1;
+
+      state.log.push(
+        "Layout schedule was intentionally delayed by one week while customer review was pending."
+      );
+    }
+
+    if (has(selected, "hold")) {
+      state.delay += 1;
+
+      state.log.push(
+        "Routing was held while customer confirmation was pending."
+      );
+    }
+
+    state.decisions.continueAll =
+      has(selected, "continueAll");
+
+    state.decisions.continueUnaffected =
+      has(selected, "continueUnaffected");
+  }
+
+
+  /* CUSTOMER CHANGE */
+
+  if (id === "customerChange") {
+
+    if (state.decisions.continueAll) {
+
+      state.delay += 1;
+
+      state.log.push(
+        "Customer I/O change affected routing that had already progressed."
+      );
+    }
+
+    if (state.cableStartedEarly) {
+
+      state.cableRework = true;
+      state.delay += 3;
+
+      state.log.push(
+        "The early test cable request no longer matched the revised I/O definition."
+      );
+    }
+
+    if (state.packagingStartedEarly) {
+
+      state.packagingRework = true;
+      state.delay += 3;
+
+      state.log.push(
+        "Packaging work started before the I/O definition stabilized and required rework."
+      );
+    }
+  }
+
+
+  /* ROUTING NEAR COMPLETE */
+
+  if (id === "routingNearComplete") {
+
+    if (has(selected, "cableCorrect")) {
+      state.cableReady = true;
+    }
+
+    if (has(selected, "packagingCorrect")) {
+      state.packagingReady = true;
+    }
+
+    if (has(selected, "customsNow")) {
+
+      state.log.push(
+        "Customs preparation was attempted before physical product photos were available."
+      );
+    }
+
+    if (
+      has(selected, "validationTiming") &&
+      state.validationReserved
+    ) {
+      state.validationSlot = true;
+    }
+  }
+
+
+  /* FIRST BOARD */
+
+  if (id === "firstBoard") {
+
+    if (has(selected, "photo")) {
+      state.physicalPhoto = true;
+    }
+
+    if (has(selected, "shippingDocs") && !state.physicalPhoto) {
+
+      state.log.push(
+        "Shipment documentation preparation was incomplete because physical product photos were not yet available."
+      );
+    }
+  }
+
+
+  /* SHIPMENT */
+
+  if (id === "shipment") {
+
+    if (has(selected, "getPhoto")) {
+      state.physicalPhoto = true;
+    }
+
+    if (
+      has(selected, "prepareCustoms") &&
+      !state.physicalPhoto
+    ) {
+      state.delay += 1;
+
+      state.log.push(
+        "Shipment documentation could not be completed because physical product photos were still missing."
+      );
+    }
+  }
+
+
+  /* DVT READY */
+
+  if (id === "dvtReady") {
+
+    if (!state.fanStarted) {
+
+      state.delay += 6;
+
+      state.log.push(
+        "Special fan development had not been initiated early enough for the planned validation timing."
+      );
+    }
+
+    if (!state.vrttOrdered) {
+
+      state.delay += 4;
+
+      state.log.push(
+        "The required VRTT fixture was not ready when validation preparation began."
+      );
+    }
+
+    if (!state.validationReserved) {
+
+      state.delay += 4;
+
+      state.log.push(
+        "Validation resources had not been reserved in advance."
+      );
+    }
+  }
+}
+
+
+/* -------------------------------------------------
+   REVIEW
+------------------------------------------------- */
+
+function showReview() {
+
+  document.getElementById("timeDisplay").textContent =
+    "Week " + state.week;
+
+  document.getElementById("phaseDisplay").textContent =
+    "Review";
+
+  document.getElementById("impactDisplay").textContent =
+    state.delay === 0
+      ? "No delay"
+      : "+" + state.delay + " wk";
+
+
+  let logs = "";
+
+  state.log.forEach(item => {
+
+    logs += `
+      <div class="review-row">
+        ${item}
+      </div>
+    `;
+
+  });
+
+
+  if (logs === "") {
+
+    logs = `
+      <div class="review-row">
+        No major schedule-impact event was recorded.
+      </div>
+    `;
+  }
+
+
+  document.getElementById("game").innerHTML = `
+
+    <div class="card">
+
+      <div class="case-tag">
+        PROJECT REVIEW / 專案回顧
+      </div>
+
+      <h2>DVT Decision Round Complete</h2>
+
+      <p>
+        Your decisions changed the project path.
+        The events below were generated from decisions
+        made during the simulation.
+      </p>
+
+      <p>
+        你的決策已影響本次專案路徑。
+        以下事件由本輪決策產生。
+      </p>
+
+      <div class="review-row">
+
+        <strong>Schedule Impact / 時程影響</strong>
+
+        <div style="font-size:28px;margin-top:8px;">
+          ${
+            state.delay === 0
+            ? "No recorded delay"
+            : "+" + state.delay + " weeks"
+          }
+        </div>
+
+      </div>
+
+      <div class="log">
+        ${logs}
+      </div>
+
+      <div style="margin-top:24px;">
 
         <button
-          class="next-btn"
-          onclick="restartGame()"
-        >
+          class="next"
+          onclick="restartGame()">
           RESTART / 重新開始
         </button>
 
       </div>
-    `;
-
-    return;
-
-  }
-
-  game.innerHTML = `
-    <div class="message">
-
-      <h2>
-        Decision Recorded
-      </h2>
-
-      <p>
-        決策已記錄。
-      </p>
-
-      <button
-        class="next-btn"
-        onclick="nextStage()"
-      >
-        CONTINUE / 繼續
-      </button>
 
     </div>
   `;
-
 }
 
-function nextStage() {
-
-  currentStage++;
-  renderStage();
-
-}
 
 function restartGame() {
-
-  currentStage = 0;
-  decisions = [];
-  renderStage();
-
+  location.reload();
 }
 
-renderStage();
+
+renderScene();
 
 </script>
 
