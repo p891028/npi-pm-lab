@@ -1,4 +1,4 @@
- <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="zh-TW">
 
 <head>
@@ -8,7 +8,6 @@
 <title>NPI PM Lab</title>
 
 <style>
-
 * {
   box-sizing: border-box;
 }
@@ -23,147 +22,111 @@ body {
 .container {
   width: 1100px;
   max-width: 92%;
-  margin: 55px auto;
+  margin: 45px auto;
 }
 
-/* ---------- HEADER ---------- */
-
 h1 {
-  font-size: 48px;
-  margin: 0 0 8px;
+  margin: 0;
+  font-size: 46px;
   letter-spacing: 2px;
 }
 
 .subtitle {
+  margin-top: 8px;
+  margin-bottom: 30px;
   color: #8b949e;
-  font-size: 18px;
-  margin-bottom: 40px;
+  line-height: 1.6;
 }
 
-/* ---------- PANEL ---------- */
+.topbar {
+  display: flex;
+  justify-content: space-between;
+  gap: 15px;
+  margin-bottom: 20px;
+}
+
+.status-box {
+  flex: 1;
+  background: #161b22;
+  border: 1px solid #30363d;
+  border-radius: 10px;
+  padding: 14px 18px;
+}
+
+.status-label {
+  color: #8b949e;
+  font-size: 12px;
+}
+
+.status-value {
+  margin-top: 5px;
+  font-size: 19px;
+  font-weight: bold;
+}
 
 .panel {
   background: #161b22;
   border: 1px solid #30363d;
   border-radius: 12px;
-  padding: 30px;
-  margin-bottom: 25px;
+  padding: 28px;
+  margin-bottom: 22px;
 }
 
-.project-title-en {
+.stage {
+  color: #58a6ff;
+  font-size: 13px;
+  font-weight: bold;
+  letter-spacing: 1px;
+}
+
+.title-en {
   font-size: 25px;
   font-weight: bold;
+  margin-top: 10px;
 }
 
-.project-title-zh {
+.title-zh {
   color: #b1bac4;
-  margin-top: 6px;
   font-size: 18px;
+  margin-top: 5px;
 }
 
-.section-label {
-  color: #58a6ff;
-  font-size: 13px;
-  font-weight: bold;
-  letter-spacing: 1px;
-  margin-top: 30px;
-}
-
-.description-en {
-  font-size: 17px;
-  line-height: 1.6;
-  margin-bottom: 4px;
-}
-
-.description-zh {
-  color: #b1bac4;
-  line-height: 1.7;
-  margin-top: 0;
-}
-
-/* ---------- PROJECT INFO ---------- */
-
-.project-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 15px;
-  margin-top: 25px;
-}
-
-.info {
+.message {
+  margin-top: 24px;
   background: #21262d;
-  padding: 17px;
-  border-radius: 8px;
+  border-left: 4px solid #58a6ff;
+  padding: 18px;
+  line-height: 1.7;
 }
 
-.info-label {
-  color: #8b949e;
-  font-size: 13px;
+.zh {
+  color: #b1bac4;
 }
 
-.info-value {
-  font-size: 21px;
-  font-weight: bold;
-  margin-top: 6px;
-}
-
-/* ---------- BUTTON ---------- */
-
-button {
-  background: #238636;
-  color: white;
-  border: 0;
-  border-radius: 8px;
-  padding: 14px 28px;
-  font-size: 16px;
-  cursor: pointer;
-}
-
-button:hover {
-  background: #2ea043;
-}
-
-/* ---------- GAME ---------- */
-
-#game {
-  display: none;
-}
-
-.week {
-  color: #58a6ff;
-  font-size: 14px;
-  font-weight: bold;
-  letter-spacing: 1px;
-}
-
-.decision {
-  margin-top: 35px;
-}
-
-.decision-title-en {
+.question {
+  margin-top: 28px;
   font-size: 18px;
   font-weight: bold;
 }
 
-.decision-title-zh {
-  color: #8b949e;
-  margin-top: 4px;
-  margin-bottom: 14px;
+.question-zh {
+  margin-top: 5px;
+  margin-bottom: 15px;
+  color: #b1bac4;
 }
 
 .options {
-  display: flex;
-  gap: 12px;
-  flex-wrap: wrap;
+  display: grid;
+  gap: 10px;
 }
 
 .option {
-  min-width: 180px;
-  background: #21262d;
   border: 2px solid #30363d;
-  padding: 15px 20px;
-  border-radius: 8px;
+  background: #21262d;
+  border-radius: 9px;
+  padding: 15px 17px;
   cursor: pointer;
+  transition: 0.15s;
 }
 
 .option:hover {
@@ -181,64 +144,97 @@ button:hover {
 
 .option-zh {
   color: #8b949e;
+  margin-top: 4px;
   font-size: 14px;
-  margin-top: 5px;
 }
 
-/* ---------- DASHBOARD ---------- */
-
-.dashboard {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 15px;
-  margin-top: 35px;
-}
-
-.metric {
-  background: #21262d;
+button {
+  margin-top: 22px;
+  background: #238636;
+  color: white;
+  border: 0;
   border-radius: 8px;
-  padding: 18px;
-}
-
-.metric-name {
-  color: #8b949e;
-  font-size: 12px;
-  letter-spacing: 0.5px;
-}
-
-.metric-value {
-  font-size: 28px;
+  padding: 13px 24px;
+  font-size: 15px;
   font-weight: bold;
-  margin-top: 7px;
+  cursor: pointer;
 }
 
-/* ---------- EVENT ---------- */
-
-.commit {
-  margin-top: 30px;
+button:hover {
+  background: #2ea043;
 }
 
-#event {
-  margin-top: 25px;
-  padding: 20px;
-  border-left: 4px solid #d29922;
+button.secondary {
+  background: #30363d;
+}
+
+button.secondary:hover {
+  background: #484f58;
+}
+
+.notice {
+  margin-top: 20px;
+  padding: 17px;
   background: #211d13;
-  display: none;
+  border-left: 4px solid #d29922;
   line-height: 1.7;
 }
 
-.event-title {
+.good {
+  border-left-color: #3fb950;
+  background: #142018;
+}
+
+.bad {
+  border-left-color: #f85149;
+  background: #241617;
+}
+
+.hidden {
+  display: none;
+}
+
+.readiness {
+  margin-top: 20px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+}
+
+.readiness-item {
+  background: #21262d;
+  border-radius: 8px;
+  padding: 14px;
+}
+
+.ready {
+  color: #3fb950;
   font-weight: bold;
-  font-size: 18px;
 }
 
-.event-zh {
-  color: #b1bac4;
+.pending {
+  color: #d29922;
+  font-weight: bold;
 }
 
+.blocked {
+  color: #f85149;
+  font-weight: bold;
+}
+
+@media (max-width: 700px) {
+  .topbar,
+  .readiness {
+    grid-template-columns: 1fr;
+    display: grid;
+  }
+
+  h1 {
+    font-size: 34px;
+  }
+}
 </style>
 </head>
-
 
 <body>
 
@@ -251,83 +247,30 @@ button:hover {
     ODM 新產品導入專案管理模擬
   </div>
 
+  <div id="intro" class="panel">
 
-  <!-- =========================
-       INTRO SCREEN
-       ========================= -->
-
-  <div id="intro">
-
-    <div class="panel">
-
-      <div class="project-title-en">
-        PROJECT 01 — Medical Device Mainboard
-      </div>
-
-      <div class="project-title-zh">
-        專案 01 — 醫療設備主機板
-      </div>
-
-
-      <div class="section-label">
-        CUSTOMER REQUIREMENT / 客戶需求
-      </div>
-
-      <p class="description-en">
-        The customer requests Mass Production (MP) in 16 weeks.
-        The product specification has not been fully frozen.
-      </p>
-
-      <p class="description-zh">
-        客戶要求 16 週後進入量產（MP），目前產品規格尚未完全凍結。
-      </p>
-
-
-      <div class="project-grid">
-
-        <div class="info">
-          <div class="info-label">
-            MP TARGET / 量產目標
-          </div>
-          <div class="info-value">
-            16 Weeks
-          </div>
-        </div>
-
-
-        <div class="info">
-          <div class="info-label">
-            SPEC COMPLETION / 規格完成度
-          </div>
-          <div class="info-value">
-            82%
-          </div>
-        </div>
-
-
-        <div class="info">
-          <div class="info-label">
-            EVT BUILD QUANTITY / EVT 試產數量
-          </div>
-          <div class="info-value">
-            TBD
-          </div>
-        </div>
-
-
-        <div class="info">
-          <div class="info-label">
-            LONG LEAD TIME / 最長交期
-          </div>
-          <div class="info-value">
-            14 Weeks
-          </div>
-        </div>
-
-      </div>
-
+    <div class="stage">
+      CASE 01 / 專案 01
     </div>
 
+    <div class="title-en">
+      Medical Device Host Customization
+    </div>
+
+    <div class="title-zh">
+      醫療設備主機客製專案
+    </div>
+
+    <div class="message">
+      The customer has selected an existing standard platform
+      for customization into a medical device computing system.
+      This project starts from DVT.
+      <br><br>
+      <span class="zh">
+        客戶選用既有標準平台進行醫療設備主機客製。
+        本案屬既有平台修改案，由 DVT 階段開始。
+      </span>
+    </div>
 
     <button onclick="startGame()">
       START PROJECT / 開始專案
@@ -336,482 +279,1132 @@ button:hover {
   </div>
 
 
+  <div id="game" class="hidden">
 
-  <!-- =========================
-       GAME SCREEN
-       ========================= -->
+    <div class="topbar">
 
-  <div id="game">
-
-    <div class="panel">
-
-      <div class="week">
-        WEEK 0 / 16
+      <div class="status-box">
+        <div class="status-label">PROJECT WEEK / 專案週次</div>
+        <div class="status-value" id="weekDisplay">Week 0</div>
       </div>
 
-
-      <div class="project-title-en" style="margin-top:10px;">
-        EVT Planning
+      <div class="status-box">
+        <div class="status-label">CURRENT STAGE / 目前階段</div>
+        <div class="status-value" id="stageDisplay">HW Design</div>
       </div>
 
-      <div class="project-title-zh">
-        EVT 規劃
+      <div class="status-box">
+        <div class="status-label">DVT FORECAST / DVT 預估</div>
+        <div class="status-value" id="forecastDisplay">Calculating...</div>
       </div>
-
-
-      <p class="description-en">
-        The project is entering the EVT preparation stage.
-        Define the initial build plan before execution.
-      </p>
-
-      <p class="description-zh">
-        專案即將進入 EVT 準備階段，請在執行前決定第一階段的試產與備料策略。
-      </p>
-
-
-
-      <!-- EVT QUANTITY -->
-
-      <div class="decision">
-
-        <div class="decision-title-en">
-          EVT BUILD QUANTITY
-        </div>
-
-        <div class="decision-title-zh">
-          EVT 試產數量
-        </div>
-
-
-        <div class="options">
-
-          <div class="option"
-               onclick="selectQty(this,10)">
-
-            <div class="option-en">
-              10 pcs
-            </div>
-
-            <div class="option-zh">
-              小批量試產
-            </div>
-
-          </div>
-
-
-          <div class="option"
-               onclick="selectQty(this,30)">
-
-            <div class="option-en">
-              30 pcs
-            </div>
-
-            <div class="option-zh">
-              標準試產
-            </div>
-
-          </div>
-
-
-          <div class="option"
-               onclick="selectQty(this,50)">
-
-            <div class="option-en">
-              50 pcs
-            </div>
-
-            <div class="option-zh">
-              擴大試產
-            </div>
-
-          </div>
-
-        </div>
-
-      </div>
-
-
-
-      <!-- MATERIAL -->
-
-      <div class="decision">
-
-        <div class="decision-title-en">
-          MATERIAL STRATEGY
-        </div>
-
-        <div class="decision-title-zh">
-          備料策略
-        </div>
-
-
-        <div class="options">
-
-          <div class="option"
-               onclick="selectMaterial(this,'wait')">
-
-            <div class="option-en">
-              Wait for Spec Freeze
-            </div>
-
-            <div class="option-zh">
-              等待規格凍結後再備料
-            </div>
-
-          </div>
-
-
-          <div class="option"
-               onclick="selectMaterial(this,'partial')">
-
-            <div class="option-en">
-              Partial Buy
-            </div>
-
-            <div class="option-zh">
-              先行準備長交期與已確認物料
-            </div>
-
-          </div>
-
-
-          <div class="option"
-               onclick="selectMaterial(this,'full')">
-
-            <div class="option-en">
-              Full Buy
-            </div>
-
-            <div class="option-zh">
-              依目前 BOM 全面備料
-            </div>
-
-          </div>
-
-        </div>
-
-      </div>
-
-
-
-      <!-- DASHBOARD -->
-
-      <div class="dashboard">
-
-        <div class="metric">
-
-          <div class="metric-name">
-            PROJECT COST / 專案成本
-          </div>
-
-          <div class="metric-value"
-               id="cost">
-            $0
-          </div>
-
-        </div>
-
-
-        <div class="metric">
-
-          <div class="metric-name">
-            TARGET SCHEDULE / 目標時程
-          </div>
-
-          <div class="metric-value"
-               id="schedule">
-            16 wk
-          </div>
-
-        </div>
-
-
-        <div class="metric">
-
-          <div class="metric-name">
-            PROJECT RISK / 專案風險
-          </div>
-
-          <div class="metric-value"
-               id="risk">
-            50
-          </div>
-
-        </div>
-
-      </div>
-
-
-
-      <div class="commit">
-
-        <button onclick="commitPlan()">
-          COMMIT EVT PLAN / 確認 EVT 計畫
-        </button>
-
-      </div>
-
-
-      <div id="event"></div>
 
     </div>
+
+    <div id="content"></div>
 
   </div>
 
 </div>
 
 
-
 <script>
 
-/*
-========================================
-GAME VARIABLES
-遊戲變數
-========================================
-*/
+/* =========================================================
+   GAME STATE
+   ========================================================= */
 
-let evtQty = 0;
-let material = "";
+let state = {
+  step: 0,
+  week: 0,
 
-let cost = 0;
-let risk = 50;
+  stackup: false,
+  pcbMaterialCheck: false,
+  pcbMaterialPrepared: false,
+  layoutReserved: false,
+
+  fanStarted: false,
+  vrttOrdered: false,
+  validationReserved: false,
+
+  cableEarly: false,
+  packagingEarly: false,
+  customsEarly: false,
+
+  placementChoice: "",
+  customerPendingChoice: "",
+
+  cableStartedCorrectTime: false,
+  packagingStartedCorrectTime: false,
+
+  photoRequested: false,
+
+  layoutDelay: 0,
+  pcbDelay: 0,
+  reworkDelay: 0
+};
 
 
-
-/*
-========================================
-START GAME
-========================================
-*/
+/* =========================================================
+   START
+   ========================================================= */
 
 function startGame() {
-
-  document.getElementById("intro").style.display = "none";
-
-  document.getElementById("game").style.display = "block";
-
+  document.getElementById("intro").classList.add("hidden");
+  document.getElementById("game").classList.remove("hidden");
+  renderStep();
 }
 
 
+/* =========================================================
+   HELPERS
+   ========================================================= */
 
-/*
-========================================
-EVT QUANTITY
-========================================
-*/
+function updateHeader(stage) {
+  document.getElementById("weekDisplay").innerText =
+    "Week " + state.week;
 
-function selectQty(element, qty) {
+  document.getElementById("stageDisplay").innerText =
+    stage;
 
-  evtQty = qty;
+  let forecast =
+    10 +
+    state.layoutDelay +
+    state.pcbDelay +
+    state.reworkDelay;
+
+  document.getElementById("forecastDisplay").innerText =
+    "Week " + forecast;
+}
 
 
-  let options =
-    element.parentElement.querySelectorAll(".option");
+function selectedValues() {
+  return Array.from(
+    document.querySelectorAll(".option.selected")
+  ).map(x => x.dataset.value);
+}
 
 
-  options.forEach(option =>
-    option.classList.remove("selected")
-  );
+function toggleOption(element) {
+  element.classList.toggle("selected");
+}
 
+
+function chooseOne(element) {
+  document.querySelectorAll(".option")
+    .forEach(x => x.classList.remove("selected"));
 
   element.classList.add("selected");
-
-
-  calculate();
-
 }
 
 
-
-/*
-========================================
-MATERIAL STRATEGY
-========================================
-*/
-
-function selectMaterial(element, choice) {
-
-  material = choice;
-
-
-  let options =
-    element.parentElement.querySelectorAll(".option");
-
-
-  options.forEach(option =>
-    option.classList.remove("selected")
-  );
-
-
-  element.classList.add("selected");
-
-
-  calculate();
-
+function notice(text, type="") {
+  return `
+    <div class="notice ${type}">
+      ${text}
+    </div>
+  `;
 }
 
 
+/* =========================================================
+   STEP ROUTER
+   ========================================================= */
 
-/*
-========================================
-CALCULATION MODEL
-========================================
-*/
+function renderStep() {
 
-function calculate() {
-
-  cost = 0;
-
-  risk = 50;
-
-
-
-  /* EVT BUILD QUANTITY */
-
-  if (evtQty === 10) {
-
-    cost += 3000;
-
-    risk += 15;
-
-  }
-
-
-  if (evtQty === 30) {
-
-    cost += 7000;
-
-    risk -= 5;
-
-  }
-
-
-  if (evtQty === 50) {
-
-    cost += 11000;
-
-    risk -= 12;
-
-  }
-
-
-
-  /* MATERIAL STRATEGY */
-
-  if (material === "wait") {
-
-    risk += 25;
-
-  }
-
-
-  if (material === "partial") {
-
-    cost += 4000;
-
-    risk -= 10;
-
-  }
-
-
-  if (material === "full") {
-
-    cost += 9000;
-
-    risk -= 18;
-
-  }
-
-
-
-  document.getElementById("cost").innerText =
-    "$" + cost.toLocaleString();
-
-
-  document.getElementById("risk").innerText =
-    risk;
-
+  if (state.step === 0) renderWeek0();
+  if (state.step === 1) renderPCB();
+  if (state.step === 2) renderLayoutResource();
+  if (state.step === 3) renderPlacement();
+  if (state.step === 4) renderCustomerPending();
+  if (state.step === 5) renderCustomerChange();
+  if (state.step === 6) renderRouting();
+  if (state.step === 7) renderDIP();
+  if (state.step === 8) renderDVT();
 }
 
 
+/* =========================================================
+   STEP 0 — WEEK 0
+   ========================================================= */
 
-/*
-========================================
-COMMIT PLAN
-========================================
-*/
+function renderWeek0() {
 
-function commitPlan() {
+  state.week = 0;
+  updateHeader("HW Design / 線路設計");
 
-  let eventBox =
-    document.getElementById("event");
+  document.getElementById("content").innerHTML = `
+
+    <div class="panel">
+
+      <div class="stage">
+        WEEK 0 — PROJECT KICKOFF / 專案啟動
+      </div>
+
+      <div class="title-en">
+        HW Schematic Design Started
+      </div>
+
+      <div class="title-zh">
+        HW 線路設計開始
+      </div>
+
+      <div class="message">
+        <strong>EE:</strong><br>
+        Schematic design has started.
+        The current estimate is approximately one month.
+        <br><br>
+        <span class="zh">
+          線路設計已開始，目前預估約一個月。
+        </span>
+      </div>
+
+      <div class="question">
+        What would you initiate now?
+      </div>
+
+      <div class="question-zh">
+        現在你會同步啟動哪些工作？可複選。
+      </div>
+
+      <div class="options">
+
+        ${multiOption("stackup",
+          "Request PCB Stack-up",
+          "請 PCB 廠估 Stack-up")}
+
+        ${multiOption("pcbMaterial",
+          "Check PCB Material Availability",
+          "確認 PCB 板材供應狀況")}
+
+        ${multiOption("layout",
+          "Reserve Layout Resource",
+          "預約 Layout 資源")}
+
+        ${multiOption("fan",
+          "Start Special Fan Design",
+          "啟動特殊風扇設計")}
+
+        ${multiOption("vrtt",
+          "Order PV VRTT Fixture",
+          "採購 PV VRTT 治具")}
+
+        ${multiOption("cable",
+          "Request Test Cable Samples",
+          "申請測試線材樣品")}
+
+        ${multiOption("packaging",
+          "Start Packaging Planning",
+          "啟動包材規劃")}
+
+        ${multiOption("customs",
+          "Prepare Customs Documents",
+          "準備報關文件")}
+
+        ${multiOption("validation",
+          "Reserve Validation Resources",
+          "預排驗證資源")}
+
+      </div>
+
+      <button onclick="commitWeek0()">
+        CONFIRM ACTIONS / 確認工作
+      </button>
+
+    </div>
+  `;
+}
 
 
+function multiOption(value, en, zh) {
+  return `
+    <div class="option"
+         data-value="${value}"
+         onclick="toggleOption(this)">
 
-  if (evtQty === 0 || material === "") {
+      <div class="option-en">${en}</div>
+      <div class="option-zh">${zh}</div>
 
-    eventBox.style.display = "block";
-
-
-    eventBox.innerHTML =
-
-      '<div class="event-title">' +
-      'PLAN INCOMPLETE / 計畫未完成' +
-      '</div>' +
-
-      '<br>' +
-
-      'Please complete EVT Build Quantity and Material Strategy.' +
-
-      '<br>' +
-
-      '<span class="event-zh">' +
-      '請完成 EVT 試產數量與備料策略。' +
-      '</span>';
+    </div>
+  `;
+}
 
 
+function commitWeek0() {
+
+  let choices = selectedValues();
+
+  state.stackup =
+    choices.includes("stackup");
+
+  state.pcbMaterialCheck =
+    choices.includes("pcbMaterial");
+
+  state.layoutReserved =
+    choices.includes("layout");
+
+  state.fanStarted =
+    choices.includes("fan");
+
+  state.vrttOrdered =
+    choices.includes("vrtt");
+
+  state.cableEarly =
+    choices.includes("cable");
+
+  state.packagingEarly =
+    choices.includes("packaging");
+
+  state.customsEarly =
+    choices.includes("customs");
+
+  state.validationReserved =
+    choices.includes("validation");
+
+  state.step = 1;
+  state.week = 1;
+
+  renderStep();
+}
+
+
+/* =========================================================
+   STEP 1 — PCB
+   ========================================================= */
+
+function renderPCB() {
+
+  updateHeader("HW + PCB Preparation / HW＋PCB 前置");
+
+  let intro = "";
+
+  if (state.stackup) {
+
+    intro = `
+      <strong>PCB Vendor:</strong><br>
+      Stack-up preparation has started.
+      The specified PCB material is currently unavailable.
+      <br><br>
+      <span class="zh">
+        Stack-up 已開始準備，但目前指定 PCB 板材沒有現料。
+      </span>
+    `;
+
+  } else {
+
+    state.pcbDelay = 1;
+
+    intro = `
+      <strong>EE:</strong><br>
+      We need the PCB Stack-up information for the next design activity.
+      Has the PCB vendor been contacted?
+      <br><br>
+      <span class="zh">
+        後續設計需要 PCB Stack-up 資訊。
+        PCB 廠目前尚未開始準備。
+      </span>
+    `;
+  }
+
+  document.getElementById("content").innerHTML = `
+
+    <div class="panel">
+
+      <div class="stage">
+        WEEK 1 / 第 1 週
+      </div>
+
+      <div class="title-en">
+        PCB Preparation
+      </div>
+
+      <div class="title-zh">
+        PCB 前置準備
+      </div>
+
+      <div class="message">
+        ${intro}
+      </div>
+
+      <div class="question">
+        How would you handle the PCB material?
+      </div>
+
+      <div class="question-zh">
+        PCB 板材你要如何處理？
+      </div>
+
+      <div class="options">
+
+        ${singleOption(
+          "prepare",
+          "Prepare the specified material now",
+          "立即準備指定板材"
+        )}
+
+        ${singleOption(
+          "alternative",
+          "Ask EE to evaluate available alternative material",
+          "請 EE 評估現有替代板材"
+        )}
+
+        ${singleOption(
+          "wait",
+          "Wait until the design is finalized",
+          "等設計確認後再處理"
+        )}
+
+      </div>
+
+      <button onclick="commitPCB()">
+        CONFIRM / 確認
+      </button>
+
+    </div>
+  `;
+}
+
+
+function singleOption(value, en, zh) {
+  return `
+    <div class="option"
+         data-value="${value}"
+         onclick="chooseOne(this)">
+
+      <div class="option-en">${en}</div>
+      <div class="option-zh">${zh}</div>
+
+    </div>
+  `;
+}
+
+
+function commitPCB() {
+
+  let choice = selectedValues()[0];
+
+  if (!choice) {
+    alert("Please select an action. / 請選擇處理方式。");
     return;
-
   }
 
+  if (choice === "prepare") {
+    state.pcbMaterialPrepared = true;
+  }
+
+  if (choice === "alternative") {
+    state.pcbMaterialPrepared = true;
+  }
+
+  if (choice === "wait") {
+    state.pcbDelay += 2;
+  }
+
+  state.step = 2;
+  state.week = 3;
+
+  renderStep();
+}
 
 
-  eventBox.style.display = "block";
+/* =========================================================
+   STEP 2 — LAYOUT RESOURCE
+   ========================================================= */
+
+function renderLayoutResource() {
+
+  updateHeader("Schematic / Layout");
+
+  let result = "";
+
+  if (state.layoutReserved) {
+
+    result = notice(`
+      <strong>Layout Resource Reserved / Layout 資源已預約</strong><br><br>
+      Layout resource is aligned with the current schematic schedule.
+      <br>
+      <span class="zh">
+        Layout 資源已依目前線路設計時程預排。
+      </span>
+    `, "good");
+
+  } else {
+
+    state.layoutDelay += 1;
+
+    result = notice(`
+      <strong>Layout Resource Conflict / Layout 資源衝突</strong><br><br>
+      The original period is unavailable.
+      Layout must wait for the next available resource.
+      <br>
+      <span class="zh">
+        原預計時段已無 Layout 資源，
+        必須等待下一個可用時段。
+      </span>
+    `, "bad");
+  }
+
+  document.getElementById("content").innerHTML = `
+
+    <div class="panel">
+
+      <div class="stage">
+        WEEK 3 / 第 3 週
+      </div>
+
+      <div class="title-en">
+        Schematic Approaching Completion
+      </div>
+
+      <div class="title-zh">
+        線路設計接近完成
+      </div>
+
+      <div class="message">
+        <strong>EE:</strong><br>
+        Schematic design is approaching completion.
+        Layout support is required next.
+        <br><br>
+        <span class="zh">
+          線路設計即將完成，下一階段需要 Layout 資源。
+        </span>
+      </div>
+
+      ${result}
+
+      <button onclick="nextPlacement()">
+        CONTINUE / 繼續
+      </button>
+
+    </div>
+  `;
+}
 
 
-  eventBox.innerHTML =
+function nextPlacement() {
+  state.step = 3;
+  state.week = 4 + state.layoutDelay;
+  renderStep();
+}
 
-    '<div class="event-title">' +
-    'EVT PLAN COMMITTED / EVT 計畫已確認' +
-    '</div>' +
 
-    '<br>' +
+/* =========================================================
+   STEP 3 — PLACEMENT
+   ========================================================= */
 
-    'EVT Build Quantity: ' +
-    evtQty +
-    ' pcs' +
+function renderPlacement() {
 
-    '<br>' +
+  updateHeader("Layout — Placement");
 
-    'Current Project Cost: $' +
-    cost.toLocaleString() +
+  document.getElementById("content").innerHTML = `
 
-    '<br>' +
+    <div class="panel">
 
-    'Current Project Risk: ' +
-    risk +
+      <div class="stage">
+        LAYOUT REVIEW / LAYOUT 確認
+      </div>
 
-    '<br><br>' +
+      <div class="title-en">
+        Major Component Placement Ready
+      </div>
 
-    '<span class="event-zh">' +
-    '目前決策已記錄。後續事件將依據本階段的選擇產生不同影響。' +
-    '</span>';
+      <div class="title-zh">
+        大型元件 Placement 已完成初步定位
+      </div>
 
+      <div class="message">
+        <strong>Layout Engineer:</strong><br>
+        Major component placement is ready.
+        Schematic and Placement files are available for customer review.
+        <br><br>
+        <span class="zh">
+          大型元件 Placement 已完成初步定位，
+          線路與 Placement 資料已可提供客戶確認。
+        </span>
+      </div>
+
+      <div class="question">
+        How would you proceed?
+      </div>
+
+      <div class="question-zh">
+        接下來如何處理？
+      </div>
+
+      <div class="options">
+
+        ${singleOption(
+          "hold",
+          "Send Placement + Schematic to customer and hold Layout",
+          "送客戶確認，Layout 暫停"
+        )}
+
+        ${singleOption(
+          "parallel",
+          "Send to customer and continue unaffected Layout areas",
+          "送客戶確認，同時繼續不受影響區域"
+        )}
+
+        ${singleOption(
+          "finish",
+          "Complete Layout first, then send everything to customer",
+          "先完成全部 Layout，再一次請客戶確認"
+        )}
+
+      </div>
+
+      <button onclick="commitPlacement()">
+        CONFIRM / 確認
+      </button>
+
+    </div>
+  `;
+}
+
+
+function commitPlacement() {
+
+  let choice = selectedValues()[0];
+
+  if (!choice) {
+    alert("Please select an action. / 請選擇處理方式。");
+    return;
+  }
+
+  state.placementChoice = choice;
+
+  state.step = 4;
+  state.week += 0.5;
+
+  renderStep();
+}
+
+
+/* =========================================================
+   STEP 4 — CUSTOMER PENDING
+   ========================================================= */
+
+function renderCustomerPending() {
+
+  updateHeader("Customer Review / 客戶確認");
+
+  document.getElementById("content").innerHTML = `
+
+    <div class="panel">
+
+      <div class="stage">
+        CUSTOMER REVIEW / 客戶確認
+      </div>
+
+      <div class="title-en">
+        Customer Confirmation Pending
+      </div>
+
+      <div class="title-zh">
+        客戶尚未回覆
+      </div>
+
+      <div class="message">
+        Three days have passed.
+        Customer confirmation is still pending.
+        Layout asks how to proceed.
+        <br><br>
+        <span class="zh">
+          三天後，客戶仍未完成確認。
+          Layout 詢問接下來如何進行。
+        </span>
+      </div>
+
+      <div class="options">
+
+        ${singleOption(
+          "follow",
+          "Follow up and continue unaffected areas",
+          "催客戶，同時繼續不受影響區域"
+        )}
+
+        ${singleOption(
+          "hold",
+          "Hold all Layout work",
+          "全部 Layout 暫停"
+        )}
+
+        ${singleOption(
+          "full",
+          "Proceed with the complete Layout",
+          "不等客戶，全面繼續 Layout"
+        )}
+
+      </div>
+
+      <button onclick="commitCustomerPending()">
+        CONFIRM / 確認
+      </button>
+
+    </div>
+  `;
+}
+
+
+function commitCustomerPending() {
+
+  let choice = selectedValues()[0];
+
+  if (!choice) {
+    alert("Please select an action. / 請選擇處理方式。");
+    return;
+  }
+
+  state.customerPendingChoice = choice;
+
+  if (choice === "hold") {
+    state.layoutDelay += 0.5;
+  }
+
+  state.step = 5;
+  state.week += 0.5;
+
+  renderStep();
+}
+
+
+/* =========================================================
+   STEP 5 — CUSTOMER CHANGE
+   ========================================================= */
+
+function renderCustomerChange() {
+
+  updateHeader("Customer Change / 客戶設計變更");
+
+  let impact = "";
+
+  if (
+    state.placementChoice === "finish" ||
+    state.customerPendingChoice === "full"
+  ) {
+
+    state.reworkDelay = 1.5;
+
+    impact = notice(`
+      <strong>LAYOUT REWORK REQUIRED / LAYOUT 需重工</strong><br><br>
+      Major component relocation affects completed routing.
+      SI-related routing and mechanical interfaces must be rechecked.
+      <br><br>
+      <span class="zh">
+        大型元件位置變更影響已完成的 Routing，
+        SI 相關走線與機構介面需要重新確認。
+      </span>
+    `, "bad");
+
+  } else {
+
+    impact = notice(`
+      <strong>LIMITED REWORK / 局部修改</strong><br><br>
+      The affected area can be adjusted before full Layout completion.
+      <br><br>
+      <span class="zh">
+        因尚未完成全部 Layout，
+        本次變更可控制在局部修改範圍。
+      </span>
+    `, "good");
+  }
+
+  let earlyImpact = "";
+
+  if (state.cableEarly || state.packagingEarly) {
+
+    let items = [];
+
+    if (state.cableEarly) {
+      items.push(
+        "Test cable specification may require rework. / 測試線材規格可能需要重做。"
+      );
+    }
+
+    if (state.packagingEarly) {
+      items.push(
+        "Packaging input must be reviewed again. / 包材輸入條件需要重新確認。"
+      );
+    }
+
+    earlyImpact = notice(`
+      <strong>EARLY RELEASE IMPACT / 過早啟動的影響</strong><br><br>
+      ${items.join("<br>")}
+    `);
+  }
+
+  document.getElementById("content").innerHTML = `
+
+    <div class="panel">
+
+      <div class="stage">
+        CUSTOMER FEEDBACK / 客戶回覆
+      </div>
+
+      <div class="title-en">
+        Design Change Requested
+      </div>
+
+      <div class="title-zh">
+        客戶提出設計修改
+      </div>
+
+      <div class="message">
+        Please move the LAN connector and adjust
+        the adjacent I/O connector position.
+        <br><br>
+        <span class="zh">
+          請移動 LAN Connector，
+          並調整相鄰 I/O Connector 的位置。
+        </span>
+      </div>
+
+      ${impact}
+
+      ${earlyImpact}
+
+      <button onclick="nextRouting()">
+        CONTINUE LAYOUT / 繼續 LAYOUT
+      </button>
+
+    </div>
+  `;
+}
+
+
+function nextRouting() {
+  state.step = 6;
+  state.week += 1 + state.reworkDelay;
+  renderStep();
+}
+
+
+/* =========================================================
+   STEP 6 — ROUTING NEAR COMPLETE
+   ========================================================= */
+
+function renderRouting() {
+
+  updateHeader("Layout — Routing");
+
+  document.getElementById("content").innerHTML = `
+
+    <div class="panel">
+
+      <div class="stage">
+        ROUTING NEAR COMPLETION / 走線接近完成
+      </div>
+
+      <div class="title-en">
+        I/O Definition Is Becoming Stable
+      </div>
+
+      <div class="title-zh">
+        I/O 與 Connector 定義已逐漸穩定
+      </div>
+
+      <div class="message">
+        <strong>Layout Engineer:</strong><br>
+        Routing is approaching completion.
+        Major I/O definitions and connector locations are now relatively stable.
+        <br><br>
+        <span class="zh">
+          Layout 走線已接近完成，
+          主要 I/O 定義與 Connector 位置已趨於穩定。
+        </span>
+      </div>
+
+      <div class="question">
+        What would you initiate now?
+      </div>
+
+      <div class="question-zh">
+        此時你要啟動哪些工作？可複選。
+      </div>
+
+      <div class="options">
+
+        ${multiOption(
+          "cable",
+          "Request Test Cable Samples",
+          "申請測試線材樣品"
+        )}
+
+        ${multiOption(
+          "packaging",
+          "Start Packaging Design",
+          "啟動包材設計"
+        )}
+
+        ${multiOption(
+          "waitPCB",
+          "Wait until PCB fabrication is completed",
+          "等 PCB 做完再處理"
+        )}
+
+        ${multiOption(
+          "waitDVT",
+          "Wait until DVT build is completed",
+          "等 DVT Build 完成再處理"
+        )}
+
+      </div>
+
+      <button onclick="commitRouting()">
+        CONFIRM / 確認
+      </button>
+
+    </div>
+  `;
+}
+
+
+function commitRouting() {
+
+  let choices = selectedValues();
+
+  state.cableStartedCorrectTime =
+    choices.includes("cable");
+
+  state.packagingStartedCorrectTime =
+    choices.includes("packaging");
+
+  state.step = 7;
+  state.week += 3;
+
+  renderStep();
+}
+
+
+/* =========================================================
+   STEP 7 — DIP FIRST BOARD
+   ========================================================= */
+
+function renderDIP() {
+
+  updateHeader("DVT PCB Production / DVT PCB 生產");
+
+  document.getElementById("content").innerHTML = `
+
+    <div class="panel">
+
+      <div class="stage">
+        DIP FIRST BOARD / DIP 首板
+      </div>
+
+      <div class="title-en">
+        DIP First Board Is Ready
+      </div>
+
+      <div class="title-zh">
+        DIP 首板已完成
+      </div>
+
+      <div class="message">
+        <strong>MPM:</strong><br>
+        The DIP first board is ready.
+        Remaining DVT boards are still in production.
+        <br><br>
+        <span class="zh">
+          DIP 首板已產出，
+          其餘 DVT 板仍在生產中。
+        </span>
+      </div>
+
+      <div class="question">
+        What would you do now?
+      </div>
+
+      <div class="question-zh">
+        現在你會怎麼處理？
+      </div>
+
+      <div class="options">
+
+        ${singleOption(
+          "photo",
+          "Ask MPM to take physical product photos immediately",
+          "立即請 MPM 拍攝實體照片"
+        )}
+
+        ${singleOption(
+          "all",
+          "Wait until all DVT boards are completed",
+          "等全部 DVT 板完成"
+        )}
+
+        ${singleOption(
+          "ship",
+          "Ask MPM to arrange shipment after production",
+          "等生產完成後再請 MPM 安排出貨"
+        )}
+
+      </div>
+
+      <button onclick="commitDIP()">
+        CONFIRM / 確認
+      </button>
+
+    </div>
+  `;
+}
+
+
+function commitDIP() {
+
+  let choice = selectedValues()[0];
+
+  if (!choice) {
+    alert("Please select an action. / 請選擇處理方式。");
+    return;
+  }
+
+  state.photoRequested =
+    choice === "photo";
+
+  if (!state.photoRequested) {
+    state.pcbDelay += 1.5;
+  }
+
+  state.step = 8;
+  state.week += 2;
+
+  renderStep();
+}
+
+
+/* =========================================================
+   STEP 8 — DVT READY
+   ========================================================= */
+
+function renderDVT() {
+
+  updateHeader("DVT Build Readiness / DVT 準備");
+
+  let cableReady =
+    state.cableStartedCorrectTime && !state.cableEarly;
+
+  let packagingReady =
+    state.packagingStartedCorrectTime && !state.packagingEarly;
+
+  let customsReady =
+    state.photoRequested;
+
+  let fanReady =
+    state.fanStarted;
+
+  let vrttReady =
+    state.vrttOrdered;
+
+  document.getElementById("content").innerHTML = `
+
+    <div class="panel">
+
+      <div class="stage">
+        DVT BUILD READINESS / DVT 準備狀態
+      </div>
+
+      <div class="title-en">
+        DVT PCB Production Completed
+      </div>
+
+      <div class="title-zh">
+        DVT PCB 生產完成
+      </div>
+
+      <div class="message">
+        The DVT boards are ready.
+        Your earlier decisions now begin to affect downstream execution.
+        <br><br>
+        <span class="zh">
+          DVT 板已完成。
+          前面各階段的決策現在開始影響後續工作。
+        </span>
+      </div>
+
+      <div class="readiness">
+
+        ${statusItem(
+          "PCB Material / PCB 板材",
+          state.pcbMaterialPrepared,
+          "READY / 已準備",
+          "LATE / 延遲"
+        )}
+
+        ${statusItem(
+          "Special Fan / 特殊風扇",
+          fanReady,
+          "READY / 已準備",
+          "NOT READY / 尚未完成"
+        )}
+
+        ${statusItem(
+          "PV VRTT Fixture / PV VRTT 治具",
+          vrttReady,
+          "READY / 已準備",
+          "NOT READY / 尚未準備"
+        )}
+
+        ${statusItem(
+          "Test Cable / 測試線材",
+          cableReady,
+          "READY / 已準備",
+          "REWORK OR WAIT / 重做或等待"
+        )}
+
+        ${statusItem(
+          "Packaging / 包材",
+          packagingReady,
+          "IN PROGRESS / 已啟動",
+          "NOT READY / 尚未完成"
+        )}
+
+        ${statusItem(
+          "Customs / 報關",
+          customsReady,
+          "READY / 已平行準備",
+          "NOT READY / 尚未準備"
+        )}
+
+        ${statusItem(
+          "Validation Resource / 驗證資源",
+          state.validationReserved,
+          "RESERVED / 已預排",
+          "NOT RESERVED / 尚未預排"
+        )}
+
+      </div>
+
+      <div class="notice">
+        <strong>Next Stage / 下一階段</strong><br><br>
+        PV, SI, THERMAL and EMC will enter the first validation wave in parallel.
+        Approximately 1.5 weeks later, DQA and QA Lab entry conditions will be checked.
+        <br><br>
+        <span class="zh">
+          下一階段將同時展開 PV、SI、THERMAL、EMC。
+          約 1.5 週後進行 DQA 與 QA Lab 的送驗條件確認。
+        </span>
+      </div>
+
+    </div>
+  `;
+}
+
+
+function statusItem(name, ok, goodText, badText) {
+
+  return `
+    <div class="readiness-item">
+      <div>${name}</div>
+      <div class="${ok ? "ready" : "blocked"}"
+           style="margin-top:6px;">
+        ${ok ? goodText : badText}
+      </div>
+    </div>
+  `;
 }
 
 </script>
 
 </body>
-
 </html>
