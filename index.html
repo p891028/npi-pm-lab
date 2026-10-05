@@ -1,80 +1,242 @@
-<!DOCTYPE html>
+ <!DOCTYPE html>
 <html lang="zh-TW">
+
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <title>NPI PM Lab</title>
+<title>NPI PM Lab</title>
 
-  <style>
-    body {
-      margin: 0;
-      background: #0d1117;
-      color: #e6edf3;
-      font-family: Arial, sans-serif;
-    }
+<style>
 
-    .container {
-      width: 900px;
-      max-width: 90%;
-      margin: 80px auto;
-    }
+* {
+  box-sizing: border-box;
+}
 
-    h1 {
-      font-size: 48px;
-      margin-bottom: 10px;
-    }
+body {
+  margin: 0;
+  background: #0d1117;
+  color: #e6edf3;
+  font-family: Arial, "Microsoft JhengHei", sans-serif;
+}
 
-    .subtitle {
-      color: #8b949e;
-      font-size: 20px;
-      margin-bottom: 50px;
-    }
+.container {
+  width: 1100px;
+  max-width: 92%;
+  margin: 55px auto;
+}
 
-    .mission {
-      background: #161b22;
-      border: 1px solid #30363d;
-      border-radius: 12px;
-      padding: 30px;
-      margin-bottom: 30px;
-    }
+/* ---------- HEADER ---------- */
 
-    .mission h2 {
-      margin-top: 0;
-    }
+h1 {
+  font-size: 48px;
+  margin: 0 0 8px;
+  letter-spacing: 2px;
+}
 
-    .data {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 15px;
-      margin-top: 25px;
-    }
+.subtitle {
+  color: #8b949e;
+  font-size: 18px;
+  margin-bottom: 40px;
+}
 
-    .item {
-      background: #21262d;
-      padding: 15px;
-      border-radius: 8px;
-    }
+/* ---------- PANEL ---------- */
 
-    button {
-      background: #238636;
-      color: white;
-      border: none;
-      border-radius: 8px;
-      padding: 15px 30px;
-      font-size: 18px;
-      cursor: pointer;
-    }
+.panel {
+  background: #161b22;
+  border: 1px solid #30363d;
+  border-radius: 12px;
+  padding: 30px;
+  margin-bottom: 25px;
+}
 
-    button:hover {
-      background: #2ea043;
-    }
+.project-title-en {
+  font-size: 25px;
+  font-weight: bold;
+}
 
-    #result {
-      margin-top: 30px;
-      font-size: 22px;
-    }
-  </style>
+.project-title-zh {
+  color: #b1bac4;
+  margin-top: 6px;
+  font-size: 18px;
+}
+
+.section-label {
+  color: #58a6ff;
+  font-size: 13px;
+  font-weight: bold;
+  letter-spacing: 1px;
+  margin-top: 30px;
+}
+
+.description-en {
+  font-size: 17px;
+  line-height: 1.6;
+  margin-bottom: 4px;
+}
+
+.description-zh {
+  color: #b1bac4;
+  line-height: 1.7;
+  margin-top: 0;
+}
+
+/* ---------- PROJECT INFO ---------- */
+
+.project-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 15px;
+  margin-top: 25px;
+}
+
+.info {
+  background: #21262d;
+  padding: 17px;
+  border-radius: 8px;
+}
+
+.info-label {
+  color: #8b949e;
+  font-size: 13px;
+}
+
+.info-value {
+  font-size: 21px;
+  font-weight: bold;
+  margin-top: 6px;
+}
+
+/* ---------- BUTTON ---------- */
+
+button {
+  background: #238636;
+  color: white;
+  border: 0;
+  border-radius: 8px;
+  padding: 14px 28px;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+button:hover {
+  background: #2ea043;
+}
+
+/* ---------- GAME ---------- */
+
+#game {
+  display: none;
+}
+
+.week {
+  color: #58a6ff;
+  font-size: 14px;
+  font-weight: bold;
+  letter-spacing: 1px;
+}
+
+.decision {
+  margin-top: 35px;
+}
+
+.decision-title-en {
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.decision-title-zh {
+  color: #8b949e;
+  margin-top: 4px;
+  margin-bottom: 14px;
+}
+
+.options {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.option {
+  min-width: 180px;
+  background: #21262d;
+  border: 2px solid #30363d;
+  padding: 15px 20px;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.option:hover {
+  border-color: #58a6ff;
+}
+
+.option.selected {
+  border-color: #58a6ff;
+  background: #1f3548;
+}
+
+.option-en {
+  font-weight: bold;
+}
+
+.option-zh {
+  color: #8b949e;
+  font-size: 14px;
+  margin-top: 5px;
+}
+
+/* ---------- DASHBOARD ---------- */
+
+.dashboard {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 15px;
+  margin-top: 35px;
+}
+
+.metric {
+  background: #21262d;
+  border-radius: 8px;
+  padding: 18px;
+}
+
+.metric-name {
+  color: #8b949e;
+  font-size: 12px;
+  letter-spacing: 0.5px;
+}
+
+.metric-value {
+  font-size: 28px;
+  font-weight: bold;
+  margin-top: 7px;
+}
+
+/* ---------- EVENT ---------- */
+
+.commit {
+  margin-top: 30px;
+}
+
+#event {
+  margin-top: 25px;
+  padding: 20px;
+  border-left: 4px solid #d29922;
+  background: #211d13;
+  display: none;
+  line-height: 1.7;
+}
+
+.event-title {
+  font-weight: bold;
+  font-size: 18px;
+}
+
+.event-zh {
+  color: #b1bac4;
+}
+
+</style>
 </head>
 
 
@@ -85,68 +247,571 @@
   <h1>NPI PM LAB</h1>
 
   <div class="subtitle">
-    ODM New Product Introduction Simulation
+    ODM New Product Introduction Project Management Simulation<br>
+    ODM 新產品導入專案管理模擬
   </div>
 
 
-  <div class="mission">
+  <!-- =========================
+       INTRO SCREEN
+       ========================= -->
 
-    <h2>PROJECT 01 — Medical Device Mainboard</h2>
+  <div id="intro">
 
-    <p>
-      客戶要求 16 週後進入 MP。
-      目前產品規格尚未完全 Freeze。
-    </p>
+    <div class="panel">
 
-
-    <div class="data">
-
-      <div class="item">
-        MP Target<br>
-        <strong>16 Weeks</strong>
+      <div class="project-title-en">
+        PROJECT 01 — Medical Device Mainboard
       </div>
 
-      <div class="item">
-        Spec Complete<br>
-        <strong>82%</strong>
+      <div class="project-title-zh">
+        專案 01 — 醫療設備主機板
       </div>
 
-      <div class="item">
-        EVT Quantity<br>
-        <strong>30 pcs</strong>
+
+      <div class="section-label">
+        CUSTOMER REQUIREMENT / 客戶需求
       </div>
 
-      <div class="item">
-        Long Lead Time<br>
-        <strong>14 Weeks</strong>
+      <p class="description-en">
+        The customer requests Mass Production (MP) in 16 weeks.
+        The product specification has not been fully frozen.
+      </p>
+
+      <p class="description-zh">
+        客戶要求 16 週後進入量產（MP），目前產品規格尚未完全凍結。
+      </p>
+
+
+      <div class="project-grid">
+
+        <div class="info">
+          <div class="info-label">
+            MP TARGET / 量產目標
+          </div>
+          <div class="info-value">
+            16 Weeks
+          </div>
+        </div>
+
+
+        <div class="info">
+          <div class="info-label">
+            SPEC COMPLETION / 規格完成度
+          </div>
+          <div class="info-value">
+            82%
+          </div>
+        </div>
+
+
+        <div class="info">
+          <div class="info-label">
+            EVT BUILD QUANTITY / EVT 試產數量
+          </div>
+          <div class="info-value">
+            TBD
+          </div>
+        </div>
+
+
+        <div class="info">
+          <div class="info-label">
+            LONG LEAD TIME / 最長交期
+          </div>
+          <div class="info-value">
+            14 Weeks
+          </div>
+        </div>
+
       </div>
+
+    </div>
+
+
+    <button onclick="startGame()">
+      START PROJECT / 開始專案
+    </button>
+
+  </div>
+
+
+
+  <!-- =========================
+       GAME SCREEN
+       ========================= -->
+
+  <div id="game">
+
+    <div class="panel">
+
+      <div class="week">
+        WEEK 0 / 16
+      </div>
+
+
+      <div class="project-title-en" style="margin-top:10px;">
+        EVT Planning
+      </div>
+
+      <div class="project-title-zh">
+        EVT 規劃
+      </div>
+
+
+      <p class="description-en">
+        The project is entering the EVT preparation stage.
+        Define the initial build plan before execution.
+      </p>
+
+      <p class="description-zh">
+        專案即將進入 EVT 準備階段，請在執行前決定第一階段的試產與備料策略。
+      </p>
+
+
+
+      <!-- EVT QUANTITY -->
+
+      <div class="decision">
+
+        <div class="decision-title-en">
+          EVT BUILD QUANTITY
+        </div>
+
+        <div class="decision-title-zh">
+          EVT 試產數量
+        </div>
+
+
+        <div class="options">
+
+          <div class="option"
+               onclick="selectQty(this,10)">
+
+            <div class="option-en">
+              10 pcs
+            </div>
+
+            <div class="option-zh">
+              小批量試產
+            </div>
+
+          </div>
+
+
+          <div class="option"
+               onclick="selectQty(this,30)">
+
+            <div class="option-en">
+              30 pcs
+            </div>
+
+            <div class="option-zh">
+              標準試產
+            </div>
+
+          </div>
+
+
+          <div class="option"
+               onclick="selectQty(this,50)">
+
+            <div class="option-en">
+              50 pcs
+            </div>
+
+            <div class="option-zh">
+              擴大試產
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+
+
+
+      <!-- MATERIAL -->
+
+      <div class="decision">
+
+        <div class="decision-title-en">
+          MATERIAL STRATEGY
+        </div>
+
+        <div class="decision-title-zh">
+          備料策略
+        </div>
+
+
+        <div class="options">
+
+          <div class="option"
+               onclick="selectMaterial(this,'wait')">
+
+            <div class="option-en">
+              Wait for Spec Freeze
+            </div>
+
+            <div class="option-zh">
+              等待規格凍結後再備料
+            </div>
+
+          </div>
+
+
+          <div class="option"
+               onclick="selectMaterial(this,'partial')">
+
+            <div class="option-en">
+              Partial Buy
+            </div>
+
+            <div class="option-zh">
+              先行準備長交期與已確認物料
+            </div>
+
+          </div>
+
+
+          <div class="option"
+               onclick="selectMaterial(this,'full')">
+
+            <div class="option-en">
+              Full Buy
+            </div>
+
+            <div class="option-zh">
+              依目前 BOM 全面備料
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+
+
+
+      <!-- DASHBOARD -->
+
+      <div class="dashboard">
+
+        <div class="metric">
+
+          <div class="metric-name">
+            PROJECT COST / 專案成本
+          </div>
+
+          <div class="metric-value"
+               id="cost">
+            $0
+          </div>
+
+        </div>
+
+
+        <div class="metric">
+
+          <div class="metric-name">
+            TARGET SCHEDULE / 目標時程
+          </div>
+
+          <div class="metric-value"
+               id="schedule">
+            16 wk
+          </div>
+
+        </div>
+
+
+        <div class="metric">
+
+          <div class="metric-name">
+            PROJECT RISK / 專案風險
+          </div>
+
+          <div class="metric-value"
+               id="risk">
+            50
+          </div>
+
+        </div>
+
+      </div>
+
+
+
+      <div class="commit">
+
+        <button onclick="commitPlan()">
+          COMMIT EVT PLAN / 確認 EVT 計畫
+        </button>
+
+      </div>
+
+
+      <div id="event"></div>
 
     </div>
 
   </div>
 
-
-  <button onclick="startGame()">
-    START PROJECT
-  </button>
-
-
-  <div id="result"></div>
-
 </div>
+
 
 
 <script>
 
+/*
+========================================
+GAME VARIABLES
+遊戲變數
+========================================
+*/
+
+let evtQty = 0;
+let material = "";
+
+let cost = 0;
+let risk = 50;
+
+
+
+/*
+========================================
+START GAME
+========================================
+*/
+
 function startGame() {
 
-  document.getElementById("result").innerHTML =
-    "WEEK 0 — Project Kickoff started.";
+  document.getElementById("intro").style.display = "none";
+
+  document.getElementById("game").style.display = "block";
+
+}
+
+
+
+/*
+========================================
+EVT QUANTITY
+========================================
+*/
+
+function selectQty(element, qty) {
+
+  evtQty = qty;
+
+
+  let options =
+    element.parentElement.querySelectorAll(".option");
+
+
+  options.forEach(option =>
+    option.classList.remove("selected")
+  );
+
+
+  element.classList.add("selected");
+
+
+  calculate();
+
+}
+
+
+
+/*
+========================================
+MATERIAL STRATEGY
+========================================
+*/
+
+function selectMaterial(element, choice) {
+
+  material = choice;
+
+
+  let options =
+    element.parentElement.querySelectorAll(".option");
+
+
+  options.forEach(option =>
+    option.classList.remove("selected")
+  );
+
+
+  element.classList.add("selected");
+
+
+  calculate();
+
+}
+
+
+
+/*
+========================================
+CALCULATION MODEL
+========================================
+*/
+
+function calculate() {
+
+  cost = 0;
+
+  risk = 50;
+
+
+
+  /* EVT BUILD QUANTITY */
+
+  if (evtQty === 10) {
+
+    cost += 3000;
+
+    risk += 15;
+
+  }
+
+
+  if (evtQty === 30) {
+
+    cost += 7000;
+
+    risk -= 5;
+
+  }
+
+
+  if (evtQty === 50) {
+
+    cost += 11000;
+
+    risk -= 12;
+
+  }
+
+
+
+  /* MATERIAL STRATEGY */
+
+  if (material === "wait") {
+
+    risk += 25;
+
+  }
+
+
+  if (material === "partial") {
+
+    cost += 4000;
+
+    risk -= 10;
+
+  }
+
+
+  if (material === "full") {
+
+    cost += 9000;
+
+    risk -= 18;
+
+  }
+
+
+
+  document.getElementById("cost").innerText =
+    "$" + cost.toLocaleString();
+
+
+  document.getElementById("risk").innerText =
+    risk;
+
+}
+
+
+
+/*
+========================================
+COMMIT PLAN
+========================================
+*/
+
+function commitPlan() {
+
+  let eventBox =
+    document.getElementById("event");
+
+
+
+  if (evtQty === 0 || material === "") {
+
+    eventBox.style.display = "block";
+
+
+    eventBox.innerHTML =
+
+      '<div class="event-title">' +
+      'PLAN INCOMPLETE / 計畫未完成' +
+      '</div>' +
+
+      '<br>' +
+
+      'Please complete EVT Build Quantity and Material Strategy.' +
+
+      '<br>' +
+
+      '<span class="event-zh">' +
+      '請完成 EVT 試產數量與備料策略。' +
+      '</span>';
+
+
+    return;
+
+  }
+
+
+
+  eventBox.style.display = "block";
+
+
+  eventBox.innerHTML =
+
+    '<div class="event-title">' +
+    'EVT PLAN COMMITTED / EVT 計畫已確認' +
+    '</div>' +
+
+    '<br>' +
+
+    'EVT Build Quantity: ' +
+    evtQty +
+    ' pcs' +
+
+    '<br>' +
+
+    'Current Project Cost: $' +
+    cost.toLocaleString() +
+
+    '<br>' +
+
+    'Current Project Risk: ' +
+    risk +
+
+    '<br><br>' +
+
+    '<span class="event-zh">' +
+    '目前決策已記錄。後續事件將依據本階段的選擇產生不同影響。' +
+    '</span>';
 
 }
 
 </script>
 
-
 </body>
+
 </html>
